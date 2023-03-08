@@ -29,13 +29,23 @@
                 </f:facet>
                 <h:outputText value="#{item.city}"/>
             </h:column>
-
+            
+            
             <!--Exercice: Colonne pour 'discount'-->
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Discount"/>
                 </f:facet>
-                <h:outputText value="#{item.discount}"/>
+                <h:outputText value="#{item.discount.code += ' : ' += item.discount.rate += ' %'}" />
+            </h:column>
+
+            
+            <!--Colonne pour zip-->
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Zip"/>
+                </f:facet>
+                <h:outputText value="#{item.zip.zipCode += '     --     '+=item.zip.radius}"/>
             </h:column>
 
         </h:dataTable>
