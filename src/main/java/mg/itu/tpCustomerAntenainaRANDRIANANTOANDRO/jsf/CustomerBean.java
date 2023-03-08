@@ -16,9 +16,7 @@ import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.entities.Customer;
  *
  * @author Antenaina
  */
-/**
- * Backing bean de la page customerList.xhtml.
- */
+
 @Named(value = "customerBean")
 @ViewScoped
 public class CustomerBean implements Serializable {
@@ -35,9 +33,11 @@ public class CustomerBean implements Serializable {
 
     /**
      * Retourne la liste des clients pour affichage dans une DataTable.
+     * @return 
      */
     public List<Customer> getCustomers() {
         if (customerList == null) {
+            System.out.println("test-1");
             customerList = customerManager.getAllCustomers();
         }
         return customerList;
