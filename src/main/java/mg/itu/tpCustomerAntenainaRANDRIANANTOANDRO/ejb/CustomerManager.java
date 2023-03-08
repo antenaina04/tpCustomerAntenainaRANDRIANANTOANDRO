@@ -28,6 +28,7 @@ public class CustomerManager {
 
     //    READ / SELECT * / get
     public List<Customer> getAllCustomers() {
+        System.out.println("test-2");
         Query query = em.createNamedQuery("Customer.findAll");
         return query.getResultList();
     }
