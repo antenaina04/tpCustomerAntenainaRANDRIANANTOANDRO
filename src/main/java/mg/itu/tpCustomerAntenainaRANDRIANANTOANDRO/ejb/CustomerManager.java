@@ -17,6 +17,7 @@ import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.entities.Customer;
  */
 @Stateless
 public class CustomerManager {
+//Injection de l'entity manager pour envoyer des requetes en utilisant l'instance Customer
 
     @PersistenceContext(unitName = "customerPU")
     private EntityManager em;
