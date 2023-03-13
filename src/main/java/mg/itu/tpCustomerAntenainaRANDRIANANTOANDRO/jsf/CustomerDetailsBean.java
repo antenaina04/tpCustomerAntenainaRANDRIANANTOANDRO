@@ -8,8 +8,11 @@ import jakarta.ejb.EJB;
 import jakarta.inject.Named;
 import jakarta.faces.view.ViewScoped;
 import java.io.Serializable;
+import java.util.List;
 import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.ejb.CustomerManager;
+import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.ejb.DiscountManager;
 import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.entities.Customer;
+import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.entities.Discount;
 
 /**
  *
@@ -27,6 +30,8 @@ public class CustomerDetailsBean implements Serializable {
 
     @EJB
     private CustomerManager customerManager;
+    @EJB
+    private DiscountManager discountManager;
 
     public int getIdCustomer() {
         return idCustomer;
@@ -37,8 +42,8 @@ public class CustomerDetailsBean implements Serializable {
     }
 
     /**
-     * Retourne les détails du client courant (contenu dans l'attribut customer
-     * de cette classe).
+     * Retourne les détails du client courant (dans l'attribut customer de cette
+     * classe).
      *
      * @return
      */
@@ -48,19 +53,25 @@ public class CustomerDetailsBean implements Serializable {
 
     /**
      * Action handler - met à jour dans la base de données les données du client
-     * contenu dans la variable d'instance customer.
      *
-     * @return la prochaine page à afficher, celle qui affiche la liste des
-     * clients.
+     * @return Affichage de la liste des clients.
      */
     public String update() {
-        // Modifie la base de données.
-        // Il faut affecter à customer (sera expliqué dans le cours).
+        // Mise a jour de la base de données.
         customer = customerManager.update(customer);
         return "customerList";
     }
 
     public void loadCustomer() {
         this.customer = customerManager.findById(idCustomer);
+    }
+
+    /**
+     * Retourne la liste de tous les Discount.
+     *
+     * @return
+     */
+    public List<Discount> getDiscounts() {
+        return discountManager.getAllDiscounts();
     }
 }
