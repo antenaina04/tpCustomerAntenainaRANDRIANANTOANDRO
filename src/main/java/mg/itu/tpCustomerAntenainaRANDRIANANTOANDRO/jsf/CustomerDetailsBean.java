@@ -18,7 +18,7 @@ import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.entities.Customer;
 /**
  * Backing bean pour la page customerDetails.xhtml.
  */
-@Named
+@Named(value = "customerDetailsBean")
 @ViewScoped
 public class CustomerDetailsBean implements Serializable {
 

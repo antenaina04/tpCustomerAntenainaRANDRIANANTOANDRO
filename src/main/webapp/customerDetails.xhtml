@@ -3,6 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!--    Récupérer la valeur de idCustomer de HTTP GET dans la propriété idCustomer du backing bean 
+        et ensuite de lancer la méthode loadCustomer pour placer le Customer d'id idCustomer dans la propriété customer du backing bean-->
+    <f:metadata>
+        <f:viewParam name="idCustomer" value="#{customerDetailsBean.idCustomer}"
+                     required="true"/>
+        <f:viewAction action="#{customerDetailsBean.loadCustomer}"/>
+    </f:metadata>
+
     <h:head>
         <title>Details d'un client</title>
     </h:head>
