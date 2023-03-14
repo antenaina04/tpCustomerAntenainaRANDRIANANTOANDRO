@@ -9,39 +9,39 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import java.util.List;
-import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.entities.Customer;
+import mg.itu.tpCustomerAntenainaRANDRIANANTOANDRO.entities.Discount;
 
 /**
  *
  * @author Antenaina
  */
-@Stateless
-public class CustomerManager {
-//Injection de l'entity manager pour envoyer des requetes en utilisant l'instance Customer
+@Stateless //EJB sans etat
 
+public class DiscountManager {
+
+//Injection de l'entity manager pour envoyer des requetes en utilisant l'instance Customer
     @PersistenceContext(unitName = "customerPU")
     private EntityManager em;
 
     //    CREATE / post  
-    public void persist(Customer customer) {
-        em.persist(customer);
+    public void persist(Discount discount) {
+        em.persist(discount);
     }
 
     //    READ / SELECT * / get
-    public List<Customer> getAllCustomers() {
-        System.out.println("test-2");
-        Query query = em.createNamedQuery("Customer.findAll");
+    public List<Discount> getAllDiscounts() {
+        Query query = em.createNamedQuery("Discount.findAll");
         return query.getResultList();
     }
 
     //    UPDATE / put  
-    public Customer update(Customer customer) {
-        return em.merge(customer);
+    public Discount update(Discount discount) {
+        return em.merge(discount);
     }
 
-    //    FIND BY ID / GET BY ID
-    public Customer findById(int idCustomer) {
-        return em.find(Customer.class, idCustomer);
+    //    FIND BY CODE / GET BY CODE
+    public Discount findById(String code) {
+        return em.find(Discount.class, code);
     }
 
 }
